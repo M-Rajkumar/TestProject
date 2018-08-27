@@ -1,0 +1,234 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBlack">
+
+    <!-- TODO: Update blank fragment layout -->
+    <include
+        layout="@layout/layout_header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <ScrollView
+        android:id="@+id/login_parent_activity"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp">
+
+        <LinearLayout
+            android:id="@+id/rlRegistrationParent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+          
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+
+                <EditText
+                    android:id="@+id/edt_Email"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/edt_bg_normal"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="25"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:textColor="@android:color/white"
+                    android:textColorHint="@color/colorBlack" />
+
+                <EditText
+                    android:id="@+id/edt_Password"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/edt_bg_normal"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:maxLines="15"
+                    android:minLines="8"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:textColor="@android:color/white"
+                    android:textColorHint="@color/colorBlack" />
+
+                <EditText
+                    android:id="@+id/edt_RepeatPassword"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/edt_bg_normal"
+                    android:hint="Repeat Password"
+                    android:inputType="textPassword"
+                    android:maxLines="15"
+                    android:minLines="8"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:textColor="@android:color/white"
+                    android:textColorHint="@color/colorBlack" />
+
+                <EditText
+                    android:id="@+id/edt_UserName"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/edt_bg_normal"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="Driver Name"
+                    android:inputType="textCapWords"
+                    android:maxLines="15"
+                    android:padding="10dp"
+                    android:textColor="@android:color/white"
+                    android:textColorHint="@color/colorBlack" />
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/edt_bg_normal"
+                    android:orientation="horizontal"
+                    android:weightSum="10">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="0dp"
+                        android:layout_weight="1.5"
+                        android:padding="1dp">
+
+                        <Spinner
+                            android:id="@+id/sp_countrylist"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:backgroundTint="@android:color/white"
+                            android:gravity="center_horizontal"
+                            android:spinnerMode="dropdown"></Spinner>
+                    </RelativeLayout>
+
+
+                    <EditText
+                        android:id="@+id/edt_countrycode"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="0dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/edt_bg_normal"
+                        android:editable="false"
+                        android:gravity="center"
+                        android:text="+1"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="15dp" />
+
+                    <EditText
+                        android:id="@+id/edt_MobileNumber"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="0dp"
+                        android:layout_weight="7.5"
+                        android:background="@drawable/edt_bg_normal"
+                        android:gravity="start"
+                        android:hint="Mobile Number (10 digits)"
+                        android:inputType="number"
+                        android:maxLength="14"
+                        android:padding="10dp"
+                        android:textColor="@android:color/white"
+                        android:textColorHint="@color/colorBlack" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/edt_ReferalCode"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/edt_bg_normal"
+                    android:hint="Referal Code"
+                    android:inputType="textCapWords"
+                    android:maxLines="15"
+                    android:padding="10dp"
+                    android:textColor="@android:color/white"
+                    android:textColorHint="@color/colorBlack" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/CheckBoxResponse"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#fff"
+                        android:text="I accept "
+                        android:textColor="#fff"></CheckBox>
+
+                    <TextView
+                        android:id="@+id/tv_termsconditions"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Terms and Conditions."
+                        android:textColor="@android:color/holo_blue_dark" />
+
+                </LinearLayout>
+
+
+                <!-- Login Button -->
+
+                <Button
+                    android:id="@+id/btn_SignUp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dip"
+                    android:layout_marginTop="20dip"
+                    android:background="@drawable/bg_button"
+                    android:text="Sign Up"
+                    android:textAllCaps="false"
+
+                    />
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dip"
+                    android:gravity="center"
+                    android:text="or sign in with"
+                    android:textColor="#fff"
+                    android:visibility="gone" />
+
+
+
+                <!-- <com.twitter.sdk.android.core.identity.TwitterLoginButton
+                     android:id="@+id/twitterLogin"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center_vertical"
+                     android:visibility="gone" />
+
+                 <com.google.android.gms.common.SignInButton
+                     android:id="@+id/btn_sign_in"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:visibility="gone"
+                     tools:visibility="gone" />-->
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

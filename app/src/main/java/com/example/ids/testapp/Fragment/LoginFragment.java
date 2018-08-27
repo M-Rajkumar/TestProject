@@ -1,15 +1,30 @@
-package com.example.ids.testapp;
+package com.example.ids.testapp.Fragment;
+
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.ids.testapp.CommonUtill;
+import com.example.ids.testapp.Constants;
+import com.example.ids.testapp.LoginActivity;
+import com.example.ids.testapp.R;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -21,16 +36,13 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import org.apache.http.client.HttpClient;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-
-public class MainActivity extends AppCompatActivity {
-    public static final String TAG = "MainActivity";
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class LoginFragment extends Fragment {
+    public static final String TAG = "LoginActivity";
     public static final String REQUEST_METHOD_POST = "POST";
-    AppCompatActivity mActivity;
+    FragmentActivity mActivity;
     public static ProgressDialog loadinprogress;
     EditText e1, e2;
     Button b1;
@@ -38,17 +50,33 @@ public class MainActivity extends AppCompatActivity {
     public static final String USER_TYPE = "2";
     public static final boolean DEBUG = true;
 
-    // Z-Developemnt url
-    public static final String LOGIN_URL = "http://18.218.60.154:2030/login";
+
+
+
+    public LoginFragment() {
+        // Required empty public constructor
+    }
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mActivity= getActivity();
+    }
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        mActivity = this;
-        e1 = (EditText) findViewById(R.id.edt_UserName);
-        e2 = (EditText) findViewById(R.id.edt_Password);
-        b1 = (Button) findViewById(R.id.btn_Login);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View rootView = inflater.inflate(R.layout.fragment_login,container);
+        firstView(rootView);
+
+        return rootView;
+    }
+
+    private void firstView(View rootView) {
+        e1 = (EditText) rootView.findViewById(R.id.edt_UserName);
+        e2 = (EditText) rootView.findViewById(R.id.edt_Password);
+        b1 = (Button) rootView.findViewById(R.id.btn_Login);
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,13 +96,13 @@ public class MainActivity extends AppCompatActivity {
                 }
 
 
-                Logintoserver login = new Logintoserver();
-                login.execute(" " + e1.getText().toString(), " " + e2.getText().toString());
+                Logintoserver login= new Logintoserver();
+                login.execute("" + e1.getText().toString(),""+ e2.getText().toString());
 
             }
         });
-    }
 
+    }
 
     public class Logintoserver extends AsyncTask<String, Integer, String> {
 
@@ -105,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             Log.d(TAG, ">>>>>>>>>>>>>>>>log" + loginjs.toString());
-            serverresponse = postDataToServer(LOGIN_URL, "", REQUEST_METHOD_POST, null, loginjs.toString());
+            serverresponse = postDataToServer(Constants.LOGIN_URL, "", REQUEST_METHOD_POST, null, loginjs.toString());
             Log.d(TAG, ">>>>>>>>>>>>>>>>log" + serverresponse);
 
             return serverresponse;
@@ -247,4 +275,5 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
 }
