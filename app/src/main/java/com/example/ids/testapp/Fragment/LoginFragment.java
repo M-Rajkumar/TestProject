@@ -39,15 +39,16 @@ import java.util.Map;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class LoginFragment extends Fragment {
+public class LoginFragment extends Fragment implements View.OnClickListener{
     public static final String TAG = "LoginActivity";
     public static final String REQUEST_METHOD_POST = "POST";
+    String mUsernameTxt,mPasswordTxt;
     FragmentActivity mActivity;
     public static ProgressDialog loadinprogress;
     EditText e1, e2;
     Button b1;
     JSONObject loginjs;
-    public static final String USER_TYPE = "2";
+
     public static final boolean DEBUG = true;
 
 
@@ -78,9 +79,18 @@ public class LoginFragment extends Fragment {
         e2 = (EditText) rootView.findViewById(R.id.edt_Password);
         b1 = (Button) rootView.findViewById(R.id.btn_Login);
 
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+
+
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        mUsernameTxt=e1.getText().toString().trim();
+        mPasswordTxt=e2.getText().toString().trim();
+
+        switch (v.getId()){
+            case R.id.btn_Login:
 
                 if (!CommonUtill.isHavingValue(e1.getText().toString())) {
                     Toast.makeText(mActivity, "Please fill the email address", Toast.LENGTH_SHORT).show();
@@ -97,10 +107,9 @@ public class LoginFragment extends Fragment {
 
 
                 Logintoserver login= new Logintoserver();
-                login.execute("" + e1.getText().toString(),""+ e2.getText().toString());
+                login.execute(" " );
 
-            }
-        });
+        }
 
     }
 
@@ -125,9 +134,9 @@ public class LoginFragment extends Fragment {
             loginjs = new JSONObject();
             String serverresponse = null;
             try {
-                loginjs.put("email", "" + params[0]);
-                loginjs.put("password", "" + params[1]);
-                loginjs.put("user_type", "" + USER_TYPE);
+                loginjs.put("email",mUsernameTxt.trim());
+                loginjs.put("password",mPasswordTxt);
+                loginjs.put("user_type", "" + Constants.USER_TYPE);
                 //loginjs.put("device_token", "" + subscribeToPushService());
             } catch (JSONException e) {
                 e.printStackTrace();

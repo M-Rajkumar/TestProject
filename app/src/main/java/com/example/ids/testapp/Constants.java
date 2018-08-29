@@ -4,4 +4,5 @@ public class Constants {
 
     // Z-Developemnt url
     public static final String LOGIN_URL = "http://18.218.60.154:2030/login";
+    public static final String USER_TYPE = "2";
 }
