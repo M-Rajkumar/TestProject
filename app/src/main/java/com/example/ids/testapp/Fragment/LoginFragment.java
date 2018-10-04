@@ -2,11 +2,11 @@ package com.example.ids.testapp.Fragment;
 
 
 import android.app.ProgressDialog;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,9 +15,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.ids.testapp.CommonUtill;
+import com.example.ids.testapp.CommonUtil;
 import com.example.ids.testapp.Constants;
-import com.example.ids.testapp.LoginActivity;
 import com.example.ids.testapp.R;
 
 import org.apache.http.HttpResponse;
@@ -39,28 +38,29 @@ import java.util.Map;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class LoginFragment extends Fragment implements View.OnClickListener{
+public class LoginFragment extends Fragment implements View.OnClickListener {
     public static final String TAG = "LoginActivity";
     public static final String REQUEST_METHOD_POST = "POST";
-    String mUsernameTxt,mPasswordTxt;
+    String mUsernameTxt, mPasswordTxt;
     FragmentActivity mActivity;
     public static ProgressDialog loadinprogress;
+    public SharedPreferences sharedPreferences;
+    public SharedPreferences.Editor editor;
+
     EditText e1, e2;
-    Button b1;
+    Button b1, b2;
     JSONObject loginjs;
-
     public static final boolean DEBUG = true;
-
-
 
 
     public LoginFragment() {
         // Required empty public constructor
     }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mActivity= getActivity();
+        mActivity = getActivity();
     }
 
 
@@ -68,9 +68,9 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_login,container);
+        View rootView = inflater.inflate(R.layout.fragment_login, null);
         firstView(rootView);
-
+        mActivity = getActivity();
         return rootView;
     }
 
@@ -78,38 +78,49 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
         e1 = (EditText) rootView.findViewById(R.id.edt_UserName);
         e2 = (EditText) rootView.findViewById(R.id.edt_Password);
         b1 = (Button) rootView.findViewById(R.id.btn_Login);
-
-
+        b2 = (Button) rootView.findViewById(R.id.btn_DontHaveAccount);
+        b1.setOnClickListener(this);
+        b2.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View v) {
 
-        mUsernameTxt=e1.getText().toString().trim();
-        mPasswordTxt=e2.getText().toString().trim();
+        mUsernameTxt = e1.getText().toString().trim();
+        mPasswordTxt = e2.getText().toString().trim();
 
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btn_Login:
 
-                if (!CommonUtill.isHavingValue(e1.getText().toString())) {
+                if (!CommonUtil.isHavingValue(e1.getText().toString())) {
                     Toast.makeText(mActivity, "Please fill the email address", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (!CommonUtill.isValidEmail(e1.getText().toString())) {
+                if (!CommonUtil.isValidEmail(e1.getText().toString())) {
                     Toast.makeText(mActivity, "Please fill the valid email address", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (!CommonUtill.isHavingValue(e2.getText().toString())) {
+                if (!CommonUtil.isHavingValue(e2.getText().toString())) {
                     Toast.makeText(mActivity, "Please enter the password", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
 
-                Logintoserver login= new Logintoserver();
-                login.execute(" " );
+                Logintoserver login = new Logintoserver();
+                login.execute(" ");
+                break;
+            case R.id.btn_DontHaveAccount: {
+                RegistrationFragment registrationFragment = new RegistrationFragment();
+                CommonUtil.switchFragment(mActivity, registrationFragment, R.id.rl_logincontainer, "RegistrationFragment");
+
+                break;
+            }
+            default:
+                break;
 
         }
+
 
     }
 
@@ -134,8 +145,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
             loginjs = new JSONObject();
             String serverresponse = null;
             try {
-                loginjs.put("email",mUsernameTxt.trim());
-                loginjs.put("password",mPasswordTxt);
+                loginjs.put("email", mUsernameTxt.trim());
+                loginjs.put("password", mPasswordTxt.trim());
                 loginjs.put("user_type", "" + Constants.USER_TYPE);
                 //loginjs.put("device_token", "" + subscribeToPushService());
             } catch (JSONException e) {
@@ -171,7 +182,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
                     if (serverobj != null && serverobj.length() > 0) {
                         if (!result.contains("error")) {
 
-                            if (serverobj.has("token")== true){
+                            if (serverobj.has("token") == true) {
+
 
                             }
                             if (result.contains("message")) {
