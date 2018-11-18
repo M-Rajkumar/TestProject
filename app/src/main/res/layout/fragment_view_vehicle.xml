@@ -1,0 +1,677 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/id_profile"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorYellow">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="MANAGE VEHICLE"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16dp" />
+
+        <ImageView
+            android:visibility="invisible"
+            android:id="@+id/iv_back"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_arrow_back_black" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/fl_pictuercontainer"
+                android:layout_width="fill_parent"
+                android:layout_height="250dp"
+                android:background="@drawable/icon_user">
+
+                <!--<include
+                    layout="@layout/layout_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp" />-->
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#AA000000">
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_usernae"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:text="Hello I'm"
+                    android:textColor="@android:color/white"
+                    android:textSize="20dp" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_ProfileImage"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/driver_img" />
+
+                <TextView
+                    android:id="@+id/tv_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|bottom|"
+                    android:text=""
+                    android:textColor="@android:color/white"
+                    android:textSize="20dp" />
+
+                <ImageView
+                    android:id="@+id/iv_Edit"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center|bottom|"
+                    android:layout_marginBottom="20dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/camraicon"
+                    android:visibility="invisible" />
+            </FrameLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    android:visibility="gone"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:id="@+id/txtv_DriverName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:hint="Driver Name  "
+                        android:inputType="textCapWords"
+                        android:maxLength="15"
+                        android:padding="10dp"
+                        android:singleLine="true" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/camraicon"
+                        android:padding="10dp"
+                        android:visibility="gone">
+
+                        <Spinner
+                            android:id="@+id/sp_state"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:visibility="gone"></Spinner>
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="left|center"
+                        android:hint="Driver Name"
+                        android:inputType="textCapWords"
+                        android:maxLength="15"
+                        android:padding="5dp"
+                        android:singleLine="true"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/Test_size"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight=".2"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text=" : "
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/edt_drivername"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.8"
+                        android:background="@drawable/edt_bg_normal"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:enabled="false"
+                        android:hint="Drvier Name"
+                        android:inputType="textCapWords"
+                        android:maxLength="15"
+                        android:padding="10dp"
+                        android:textSize="@dimen/Test_size" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1.2"
+                        android:gravity="right|center"
+                        android:hint="Drvier Name"
+                        android:inputType="textCapWords"
+                        android:maxLength="15"
+                        android:padding="10dp"
+                        android:singleLine="true"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/Test_size"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/edt_lastname"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.8"
+                        android:background="@drawable/bg_button"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:enabled="false"
+                        android:hint="Drvier Name"
+                        android:inputType="textCapWords"
+                        android:maxLength="15"
+                        android:padding="10dp"
+                        android:textSize="@dimen/Test_size" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="left|center"
+                        android:hint="Vechicle  No"
+                        android:inputType="textCapWords"
+                        android:maxLength="15"
+                        android:padding="5dp"
+                        android:singleLine="true"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/Test_size"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight=".2"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text=" : "
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/edt_vechicleno"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:background="@drawable/edt_bg_normal"
+                        android:hint="Enter Vehicle No"
+                        android:inputType="textCapWords"
+                        android:maxLength="15"
+                        android:padding="10dp"
+                        android:textSize="@dimen/Test_size" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:hint="Car Type"
+                        android:inputType="textCapWords"
+                        android:maxLength="15"
+                        android:padding="5dp"
+                        android:singleLine="true"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/Test_size"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="top"
+                        android:layout_weight=".2"
+                        android:gravity="top|center"
+                        android:padding="10dp"
+                        android:text=" : "
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2">
+
+                        <TextView
+                            android:id="@+id/tv_errormessage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="top"
+                            android:layout_weight=".2"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="No Cabs found your city"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:visibility="gone" />
+
+                        <RadioGroup
+                            android:id="@+id/rg_Gender"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:textSize="@dimen/Test_size"
+                            android:visibility="visible">
+
+                            <RadioButton
+                                android:id="@+id/rbtn_one"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:buttonTint="#e75748"
+                                android:checked="true"
+                                android:text="Yiiri O"
+                                android:textColor="#000"
+                                android:textSize="@dimen/Test_size"
+                                android:visibility="gone" />
+
+                            <RadioButton
+                                android:id="@+id/rbtn_two"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:buttonTint="#e75748"
+                                android:text="Yiiri Suv"
+                                android:textColor="#000"
+                                android:textSize="@dimen/Test_size"
+                                android:visibility="gone" />
+
+                            <RadioButton
+                                android:id="@+id/rbtn_three"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:buttonTint="#e75748"
+                                android:text="Yiiri Og"
+                                android:textColor="#000"
+                                android:textSize="@dimen/Test_size"
+                                android:visibility="gone" />
+
+                            <RadioButton
+                                android:id="@+id/rbtn_four"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:buttonTint="#e75748"
+                                android:text="Yiir Share"
+                                android:textColor="#000"
+                                android:textSize="@dimen/Test_size"
+                                android:visibility="gone" />
+                        </RadioGroup>
+                    </FrameLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="left|center"
+                        android:hint="Car Name"
+                        android:inputType="textCapWords"
+                        android:maxLength="15"
+                        android:padding="5dp"
+                        android:singleLine="true"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/Test_size"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight=".2"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text=" : "
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/edt_carname"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.8"
+                        android:background="@drawable/edt_bg_normal"
+                        android:hint="Enter Car Name"
+                        android:inputType="textCapWords"
+                        android:maxLength="15"
+                        android:padding="10dp"
+                        android:textSize="@dimen/Test_size" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal"
+                    android:textSize="@dimen/Test_size"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="left|center"
+                        android:hint="Car Model"
+                        android:inputType="textCapWords"
+                        android:maxLength="15"
+                        android:padding="5dp"
+                        android:singleLine="true"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/Test_size"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight=".2"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text=" : "
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/edt_carbrandname"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1.8"
+                        android:background="@drawable/edt_bg_normal"
+                        android:gravity="left|center"
+                        android:hint="Enter Car Model"
+                        android:inputType="textCapWords"
+                        android:maxLength="20"
+                        android:padding="10dp"
+                        android:textSize="@dimen/Test_size" />
+
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="left|center"
+                        android:hint="Year Of Model"
+                        android:inputType="textCapWords"
+                        android:maxLength="15"
+                        android:padding="5dp"
+                        android:singleLine="true"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight=".2"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text=" : "
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.8"
+                        android:background="@drawable/edt_bg_normal"
+                        android:padding="10dp">
+
+                        <Spinner
+                            android:id="@+id/sp_Model"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"
+                            android:overlapAnchor="false"
+                            android:spinnerMode="dropdown"></Spinner>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="left|center"
+                        android:hint="Car Owned \nby"
+                        android:inputType="textCapWords"
+                        android:maxLength="15"
+                        android:padding="5dp"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/Test_size"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight=".2"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text=" : "
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/edt_carowenedby"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.8"
+                        android:background="@drawable/edt_bg_normal"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="Enter Car Owner Name"
+                        android:inputType="textCapWords"
+                        android:maxLength="20"
+                        android:padding="10dp"
+                        android:textSize="@dimen/Test_size" />
+
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="left|center"
+                        android:hint="Car Photo"
+                        android:inputType="textCapWords"
+                        android:maxLength="15"
+                        android:padding="5dp"
+                        android:singleLine="true"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/Test_size"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight=".2"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text=" : "
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.8"
+                        android:orientation="horizontal"
+                        android:padding="2dp"
+                        android:weightSum="2">
+
+                        <ImageView
+                            android:id="@+id/btn_browse"
+                            android:layout_width="0dp"
+                            android:layout_height="38dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:src="@drawable/ic_upload"
+                            android:text="Upload"
+                            android:textAllCaps="false"
+                            android:textSize="@dimen/Test_size" />
+
+                        <ImageView
+                            android:id="@+id/iv_carphoto"
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1"
+                            android:hint="Enter Photo "
+                            android:inputType="textCapWords"
+                            android:maxLength="15"
+                            android:padding="5dp"
+                            android:src="@drawable/driver_img" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_update"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dip"
+                    android:background="@drawable/bg_button"
+                    android:text="Update"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/Test_size" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
